@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/d80e5d14-59e6-4e62-a0b3-3f4ac7bce06c/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/pi-identification-api",
+    "appService.deploySubpath": "."
+}
