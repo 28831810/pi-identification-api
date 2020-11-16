@@ -7,7 +7,7 @@ var port = process.env.PORT || 3838;
 
 app.get("/test", function(request, response)
 {
-    response.json({ "hell" : "yeah" });
+    response.json({ "hell please work" : "yeah it works" });
 });
 
 //Start the server
