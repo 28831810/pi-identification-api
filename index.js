@@ -7,8 +7,10 @@ var port = process.env.PORT || 3838;
 
 
 const userRoutes = require('./routes/users');
+const infoRoutes = require('./routes/info');
 
 app.use('/users', userRoutes)
+app.use('/info', infoRoutes)
 
 
 app.post("/test", function(request, response)
