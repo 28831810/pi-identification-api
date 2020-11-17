@@ -12,28 +12,14 @@ const infoRoutes = require('./routes/info');
 
 app.use('/users', userRoutes)
 app.use('/info', infoRoutes)
-//logger
-// var logger = require('morgan');
 
-// app.use(logger('common', {
-//     stream: fs.createWriteStream('./access.log', {flags: 'a'})
-// }));
-// app.use(logger('dev'));
-
-//logger
-
-
-
-// app.post("/test", function(request, response)
-// {
-//     response.json({ "hell please work" : "yeah it works POST request" });
-// });
 
 // //Start the server
-
-// app.listen(port, function ()
-// {
-//     console.log("APdI server running " + "(Started " + new Date() + ")");
-// });
+{
+    app.listen(port, function ()
+    {
+        console.log("APdI server running " + "(Started " + new Date() + ")");
+    });
+}
 
 module.exports = app;
