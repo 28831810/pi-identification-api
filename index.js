@@ -19,7 +19,7 @@ mongoose.connect(
         useMongoClient: true
     });
 
-// const MongoClient = require('mongodb').MongoClient;
+// const MongoClient = require('mongodb').MongoClient;::
 // const uri = "mongodb+srv://studentAdmin:admin%40word1%0A@pi-identification-clust.iktww.mongodb.net/pi-identification-api-db?retryWrites=true&w=majority";
 // const client = new MongoClient(uri, { useUnifiedTopology: true });
 // console.log("It works");
