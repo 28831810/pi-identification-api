@@ -5,18 +5,18 @@ var app = express();
 app.use(bodyParser.json());
 var port = process.env.PORT || 3838;
 
-const morgan = require('morgan');
+// const morgan = require('morgan');
 
 const userRoutes = require('./routes/users');
 const infoRoutes = require('./routes/info');
 
 //logger
-var logger = require('morgan');
+// var logger = require('morgan');
 
-app.use(logger('common', {
-    stream: fs.createWriteStream('./access.log', {flags: 'a'})
-}));
-app.use(logger('dev'));
+// app.use(logger('common', {
+//     stream: fs.createWriteStream('./access.log', {flags: 'a'})
+// }));
+// app.use(logger('dev'));
 
 //logger
 
