@@ -1,6 +1,9 @@
 const express = require('express');
 const { routes } = require('..');
 const router = express.Router();
+const mongoose = require('mongoose');
+
+const User = require('../models/users');
 
 
 router.post('/', (req, res, next) => {
@@ -8,6 +11,14 @@ router.post('/', (req, res, next) => {
         name: req.body.name,
         surname: req.body.surname
     };
+    const user = new User({
+        _id: new mongoose.Types.ObjectId(),
+        name: req.body.name
+    });
+    user.save().then(result => {
+        console.log(result);
+    })
+    .catch(err => console.log(err));
     res.status(201).json({
         message: 'handle POST requests to /users',
         createdUser: user

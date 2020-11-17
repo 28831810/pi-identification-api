@@ -5,12 +5,19 @@ var app = express();
 app.use(bodyParser.json());
 var port = process.env.PORT || 3838;
 
-// const morgan = require('morgan');
+const mongoose = require('mongoose');
 
 //route configs
 const userRoutes = require('./routes/users');
 const infoRoutes = require('./routes/info');
 //End of route configs
+
+mongoose.connect(
+    "mongodb+srv://studentAdmin:"+ 
+    process.env.MONGO_ATLAS_PW +
+    "@pi-identification-clust.iktww.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+        useMongoClient: true
+    });
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
