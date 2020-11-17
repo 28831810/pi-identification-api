@@ -3,13 +3,13 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
     res.status(200).json({
-        message: 'handle GET requests to /products'
+        message: 'handle GET requests to /users'
     })
 })
 
-router.get('/', (req, res, next) => {
+router.post('/', (req, res, next) => {
     res.status(200).json({
-        message: 'handle POST requests to /products'
+        message: 'handle POST requests to /users'
     })
 })
 
