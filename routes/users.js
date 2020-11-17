@@ -28,16 +28,16 @@ router.get('/:userId', (req, res, next) => {
     }
 })
 
-routes.patch('/:usersId', (req, res, next) => {
-    res.status(200).json({
-        message: 'Patched product'
-    });
-})
+// routes.patch('/:usersId', (req, res, next) => {
+//     res.status(200).json({
+//         message: 'Patched product'
+//     });
+// })
 
-routes.delete('/:usersId', (req, res, next) => {
-    res.status(200).json({
-        message: 'Deleted product'
-    });
-})
+// routes.delete('/:usersId', (req, res, next) => {
+//     res.status(200).json({
+//         message: 'Deleted product'
+//     });
+// })
 
 module.exports = router;
