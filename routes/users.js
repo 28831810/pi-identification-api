@@ -7,37 +7,36 @@ const User = require('../models/users');
 
 
 router.post('/', (req, res, next) => {
-    const user = {
-        name: req.body.name,
-        surname: req.body.surname
-    };
     const user = new User({
         _id: new mongoose.Types.ObjectId(),
-        name: req.body.name
+        name: req.body.name,
+        surname: req.body.surname
     });
-    user.save().then(result => {
+    user
+    .save()
+    .then(result => {
         console.log(result);
     })
     .catch(err => console.log(err));
     res.status(201).json({
-        message: 'handle POST requests to /users',
+        message: "handle POST requests to /users",
         createdUser: user
     });
 });
 
-router.get('/:userId', (req, res, next) => {
+router.get("/:userId", (req, res, next) => {
     const id = req.params.userId;
-    if(id == 'special'){
-        res.status(200).json({
-            message: 'you descovered special ID',
-            id: id
-        });
-    } else {
-        res.status(200).json({
-            message: 'youre ID is',
-        });
-    }
-})
+    User.findById(id)
+    .exec()
+    .then(doc => {
+        console.log(doc);
+        res.status(200).json(doc);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error: err});
+    });
+});
 
 router.patch('/:usersId', (req, res, next) => {
     res.status(200).json({

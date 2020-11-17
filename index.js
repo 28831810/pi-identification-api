@@ -15,9 +15,20 @@ const infoRoutes = require('./routes/info');
 mongoose.connect(
     "mongodb+srv://studentAdmin:"+ 
     process.env.MONGO_ATLAS_PW +
-    "@pi-identification-clust.iktww.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+    "@pi-identification-clust.iktww.mongodb.net/pi-identification-api-db?retryWrites=true&w=majority", {
         useMongoClient: true
     });
+
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://studentAdmin:admin%40word1%0A@pi-identification-clust.iktww.mongodb.net/pi-identification-api-db?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useUnifiedTopology: true });
+// console.log("It works");
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   console.log("It does not works");
+//   // perform actions on the collection object
+//   client.close();
+// });
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());

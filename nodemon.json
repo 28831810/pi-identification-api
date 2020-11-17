@@ -1,0 +1,5 @@
+{
+    "env": {
+        "MONGO_ATLAS_PW": "admin%40word1%0A" 
+    }
+}
