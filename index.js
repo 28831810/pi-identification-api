@@ -10,11 +10,11 @@ const userRoutes = require('./routes/users');
 
 app.use('/users', userRoutes)
 
-router.get("/users", (req, res, next) => {
-    res.status(200).json({
-        message: 'handle GET requests to /products'
-    })
-})
+// app.get("/users", (req, res, next) => {
+//     res.status(200).json({
+//         message: 'handle GET requests to /products'
+//     })
+// })
 
 
 app.post("/test", function(request, response)
