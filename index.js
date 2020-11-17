@@ -7,12 +7,24 @@ var port = process.env.PORT || 3838;
 
 // const morgan = require('morgan');
 
+//route configs
 const userRoutes = require('./routes/users');
 const infoRoutes = require('./routes/info');
+//End of route configs
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    if(req.method == 'OPTIONS'){
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+        return res.status(200).json({});
+    }
+    next();
+});
+//error handling
 app.use('/users', userRoutes)
 app.use('/info', infoRoutes)
 
@@ -30,6 +42,7 @@ app.use((error, req, res, next) => {
         }
     });
 });
+//end of error handling
 
 // //Start the server
 {
