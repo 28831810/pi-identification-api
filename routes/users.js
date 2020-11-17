@@ -12,3 +12,18 @@ router.get('/', (req, res, next) => {
         message: 'handle POST requests to /products'
     })
 })
+
+router.get('/:userId', (req, res, next) => {
+    const id = req.params.productId;
+    if(id === 'special'){
+        res.status(200).json({
+            message: 'you descovered special ID',
+            id: id
+        });
+    } else {
+        res.status(200).json({
+            message: 'youre ID is',
+            id: id
+        });
+    }
+})
