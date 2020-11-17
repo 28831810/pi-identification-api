@@ -2,11 +2,11 @@ const express = require('express');
 const { routes } = require('..');
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-    res.status(200).json({
-        message: 'handle GET requests to /users'
-    })
-})
+// router.get('/', (req, res, next) => {
+//     res.status(200).json({
+//         message: 'handle GET requests to /users'
+//     })
+// })
 
 router.post('/', (req, res, next) => {
     res.status(200).json({
