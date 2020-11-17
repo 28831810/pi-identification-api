@@ -20,20 +20,20 @@ const infoRoutes = require('./routes/info');
 
 //logger
 
-app.use('/users', userRoutes)
-app.use('/info', infoRoutes)
+// app.use('/users', userRoutes)
+// app.use('/info', infoRoutes)
 
 
-app.post("/test", function(request, response)
-{
-    response.json({ "hell please work" : "yeah it works POST request" });
-});
+// app.post("/test", function(request, response)
+// {
+//     response.json({ "hell please work" : "yeah it works POST request" });
+// });
 
-//Start the server
+// //Start the server
 
-app.listen(port, function ()
-{
-    console.log("API server running " + "(Started " + new Date() + ")");
-});
+// app.listen(port, function ()
+// {
+//     console.log("API server running " + "(Started " + new Date() + ")");
+// });
 
 module.exports = app;
