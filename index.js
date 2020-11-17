@@ -15,6 +15,12 @@ var port = process.env.PORT || 3838;
 //     response.json({ "hell please work" : "yeah it works" });
 // });
 
+router.get('/users', (req, res, next) => {
+    res.status(200).json({
+        message: 'handle GET requests to /users'
+    })
+})
+
 app.post("/test", function(request, response)
 {
     response.json({ "hell please work" : "yeah it works POST request" });
