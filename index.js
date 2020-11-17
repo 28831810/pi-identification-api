@@ -13,6 +13,20 @@ const infoRoutes = require('./routes/info');
 app.use('/users', userRoutes)
 app.use('/info', infoRoutes)
 
+app.use((req, res, next) =>{
+    const error = new Error('Not found');
+    error.status = 404;
+    next(error);
+});
+
+app.use((error, req, res, next) => {
+    res.status(err.status || 500);
+    res.json({
+        error: {
+            message: error.message
+        }
+    })
+});
 
 // //Start the server
 {
