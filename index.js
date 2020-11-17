@@ -33,7 +33,7 @@ const infoRoutes = require('./routes/info');
 
 // app.listen(port, function ()
 // {
-//     console.log("API server running " + "(Started " + new Date() + ")");
+//     console.log("APdI server running " + "(Started " + new Date() + ")");
 // });
 
 module.exports = app;
