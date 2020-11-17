@@ -2,16 +2,11 @@ const express = require('express');
 const { routes } = require('..');
 const router = express.Router();
 
-// router.get('/', (req, res, next) => {
-//     res.status(200).json({
-//         message: 'handle GET requests to /users'
-//     })
-// })
 
 router.post('/', (req, res, next) => {
     res.status(200).json({
         message: 'handle POST requests to /users'
-    })
+    });
 })
 
 router.get('/:userId', (req, res, next) => {
@@ -28,13 +23,13 @@ router.get('/:userId', (req, res, next) => {
     }
 })
 
-routes.patch('/:usersId', (req, res, next) => {
+router.patch('/:usersId', (req, res, next) => {
     res.status(200).json({
         message: 'Patched product'
     });
 })
 
-routes.delete('/:usersId', (req, res, next) => {
+router.delete('/:usersId', (req, res, next) => {
     res.status(200).json({
         message: 'Deleted product'
     });
