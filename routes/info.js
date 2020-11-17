@@ -9,10 +9,15 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+    const moreInfo = {
+        sexInfo: req.body.sexInfo,
+        childrenInfo: req.body.childrenInfo
+    };
     res.status(201).json({
-        message: 'More indo was created'
+        message: 'More indo was created',
+        moreInfo: moreInfo
     });
-})
+});
 
 router.get('/:infoId', (req, res, next) => {
     res.status(200).json({

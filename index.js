@@ -10,10 +10,13 @@ var port = process.env.PORT || 3838;
 const userRoutes = require('./routes/users');
 const infoRoutes = require('./routes/info');
 
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 app.use('/users', userRoutes)
 app.use('/info', infoRoutes)
 
-app.use((req, res, next) =>{
+app.use((req, res, next) => {
     const error = new Error('Not found');
     error.status = 404;
     next(error);
