@@ -15,6 +15,11 @@ app.get("/test", function(request, response)
     response.json({ "hell please work" : "yeah it works" });
 });
 
+app.post("/test", function(request, response)
+{
+    response.json({ "hell please work" : "yeah it works POST request" });
+});
+
 //Start the server
 
 app.listen(port, function ()
