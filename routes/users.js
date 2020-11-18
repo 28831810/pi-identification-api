@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const User = require('../models/users');
 
 router.get("/", (req, res, next) =>{
-    product.find()
+    User.find()
     .exec()
     .then(docs => {
         console.log(docs);
@@ -19,6 +19,7 @@ router.get("/", (req, res, next) =>{
         });
     });
 });
+
 
 router.post('/', (req, res, next) => {
     const user = new User({
@@ -63,15 +64,38 @@ router.get("/:userId", (req, res, next) => {
 });
 
 router.patch('/:usersId', (req, res, next) => {
-    res.status(200).json({
-        message: 'Patched product'
+    const id = req.params.usersId;
+    const updateOps = {};
+    for(const ops of req.body){
+        updateOps[ops.propName] = ops.value;
+    }
+    User.update({ _id: id }, { $set: updateOps})
+    .exec()
+    .then(result => {
+        console.log(result);
+        res.status(200).json(result);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
     });
-})
+});
 
 router.delete('/:usersId', (req, res, next) => {
-    res.status(200).json({
-        message: 'Deleted product'
+    const id = req.params.usersId;
+    User.remove({ _id: id })
+    .exec()
+    .then(result => {
+        res.status(202).json(result);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
     });
-})
+});
 
 module.exports = router;
