@@ -48,7 +48,7 @@ app.use((req, res, next) => {
 //Routing configs
 app.use('/users', userRoutes);
 app.use('/usersInfo', usersInfoRoutes);
-app.use('/usersLogin', usersLoginRoutes);
+app.use('/', usersLoginRoutes);
 //Routing configs
 
 app.use((req, res, next) => {
