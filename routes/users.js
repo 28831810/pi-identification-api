@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const multer = require('multer');
+const checkAuth = require('../middleware/check-auth');
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -26,8 +27,8 @@ const storage = multer.diskStorage({
     storage: storage,
     limits: {
       fileSize: 1024 * 1024 * 10
-    },
-    fileFilter: fileFilter
+    }//,
+    //fileFilter: fileFilter
   });
 
 const User = require('../models/users');
@@ -92,7 +93,7 @@ router.get("/:userId", (req, res, next) => {
 });
 
 //post a new user within the DB
-router.post("/", upload.single('userImage'), (req, res, next) => {
+router.post("/",  checkAuth, upload.single('userImage'),  (req, res, next) => {
     const user = new User({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
@@ -110,8 +111,8 @@ router.post("/", upload.single('userImage'), (req, res, next) => {
                 surname: result.surname,
                 _id: result._id,
                 request: {
-                    type: 'GET',
-                    url: 'http://localhost:3838/users/' + result._id
+                    type: "GET",
+                    url: "http://localhost:3838/users/" + result._id
                 }
             }
         });
@@ -125,7 +126,7 @@ router.post("/", upload.single('userImage'), (req, res, next) => {
 });
 
 //Updates a specific user in the DB
-router.patch('/:usersId', (req, res, next) => {
+router.patch('/:usersId',checkAuth, (req, res, next) => {
     const id = req.params.usersId;
     const updateOps = {};
     for(const ops of req.body){
@@ -152,7 +153,7 @@ router.patch('/:usersId', (req, res, next) => {
 });
 
 //Removes a specific user within the DB
-router.delete('/:usersId', (req, res, next) => {
+router.delete('/:usersId',checkAuth, (req, res, next) => {
     const id = req.params.usersId;
     User.remove({ _id: id })
     .exec()

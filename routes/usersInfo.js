@@ -5,9 +5,10 @@ const mongoose = require('mongoose');
 
 const UserInfo = require('../models/userInfo');
 const User = require('../models/users');
+const checkAuth = require('../middleware/check-auth');
 
 
-router.get('/', (req, res, next) => {
+router.get('/', checkAuth, (req, res, next) => {
     UserInfo.find()
     .select('user quantity _id')
     .populate('user', '_id name surname')
@@ -35,7 +36,7 @@ router.get('/', (req, res, next) => {
     })
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', checkAuth, (req, res, next) => {
     User.findById(req.body.userId)
     .then(user => {
         if(!user){
@@ -75,7 +76,7 @@ router.post('/', (req, res, next) => {
     });
 });
 
-router.get('/:usersInfoId', (req, res, next) => {
+router.get('/:usersInfoId', checkAuth, (req, res, next) => {
     UserInfo.findById(req.params.usersInfoId)
     .populate('user', '_id name surname')
     .exec()
@@ -100,7 +101,7 @@ router.get('/:usersInfoId', (req, res, next) => {
     })
 })
 
-router.delete('/:usersInfoId', (req, res, next) => {
+router.delete('/:usersInfoId', checkAuth, (req, res, next) => {
     UserInfo.remove({ _id: req.params.usersInfoId })
     .exec()
     .then(result => {

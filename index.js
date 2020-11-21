@@ -18,8 +18,10 @@ const usersLoginRoutes = require('./routes/usersLogin');
 //connect to mongoDB 
 mongoose.connect(MONGODB_URI || 'mongodb://localhost/project2_db_con',{
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
 });
+mongoose.set('useCreateIndex', true);
 mongoose.connection.on('connected', () =>{
     console.log('Mongoose is connected!!!!!')
 });
