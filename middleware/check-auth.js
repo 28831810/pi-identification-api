@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 
+// creates the web token that is required to login to the api
 module.exports = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(" ")[1];

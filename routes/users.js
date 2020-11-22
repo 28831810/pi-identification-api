@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const multer = require('multer');
 const checkAuth = require('../middleware/check-auth');
 
+//stores the file upload. Can handle any kinf of data uploads
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, './uploads/');
@@ -14,6 +15,7 @@ const storage = multer.diskStorage({
     }
 });
 
+//Filters to limit the upload file size to 10mb
   const fileFilter = (req, file, cb) => {
     // reject a file
     if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
@@ -31,6 +33,7 @@ const storage = multer.diskStorage({
     //fileFilter: fileFilter
   });
 
+//rerouting the users schema
 const User = require('../models/users');
 
 //gets all users within the DB

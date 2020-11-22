@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 
 const UsersLogin = require('../models/usersLogin');
 
+//Create a new user for a new webToken
 router.post("/signup", (req, res, next) => {
     UsersLogin.find({email: req.body.email})
     .exec()
@@ -47,6 +48,7 @@ router.post("/signup", (req, res, next) => {
     })
 });
 
+//User can login with email and password
 router.post("/login", (req, res, next) => {
     UsersLogin.find({ email: req.body.email })
     .exec()
@@ -90,7 +92,7 @@ router.post("/login", (req, res, next) => {
     });
 });
 
-
+//user can be deleted from the system
 router.delete("/:userloginId", (req, res, next) => {
     UsersLogin.remove({ _id: req.params.userloginId })
     .exec()

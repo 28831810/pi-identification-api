@@ -7,7 +7,7 @@ const UserInfo = require('../models/userInfo');
 const User = require('../models/users');
 const checkAuth = require('../middleware/check-auth');
 
-
+//gets all collection of users within the DB
 router.get('/', checkAuth, (req, res, next) => {
     UserInfo.find()
     .select('user quantity _id')
@@ -36,6 +36,7 @@ router.get('/', checkAuth, (req, res, next) => {
     })
 })
 
+//POST a new collection of users
 router.post('/', checkAuth, (req, res, next) => {
     User.findById(req.body.userId)
     .then(user => {
@@ -76,6 +77,7 @@ router.post('/', checkAuth, (req, res, next) => {
     });
 });
 
+//gets a specific collection of users
 router.get('/:usersInfoId', checkAuth, (req, res, next) => {
     UserInfo.findById(req.params.usersInfoId)
     .populate('user', '_id name surname')
@@ -101,6 +103,7 @@ router.get('/:usersInfoId', checkAuth, (req, res, next) => {
     })
 })
 
+//DELETE the specific user collection
 router.delete('/:usersInfoId', checkAuth, (req, res, next) => {
     UserInfo.remove({ _id: req.params.usersInfoId })
     .exec()
@@ -121,4 +124,5 @@ router.delete('/:usersInfoId', checkAuth, (req, res, next) => {
     })
 });
 
+//exports the router
 module.exports = router;
