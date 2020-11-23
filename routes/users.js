@@ -52,7 +52,7 @@ router.get("/", (req, res, next) =>{
                     _id: doc._id,
                     request: {
                         type: 'GET',
-                        url:'http://localhost:3838/users/' + doc._id //insert azure web app url when building!!!!
+                        url:'https://pi-identification-api-2.azurewebsites.net/users/' + doc._id //insert azure web app url when building!!!!
                     }
                 }
             })
@@ -80,7 +80,7 @@ router.get("/:userId", (req, res, next) => {
                 name: doc,
                 request: {
                     type: 'GET',
-                    url:'http://localhost:3838/users/' + doc._id //insert azure web app url when building!!!!
+                    url:'https://pi-identification-api-2.azurewebsites.net/users/' + doc._id //insert azure web app url when building!!!!
                 }
             });
                 
@@ -115,7 +115,7 @@ router.post("/",  checkAuth, upload.single('userUpload'),  (req, res, next) => {
                 _id: result._id,
                 request: {
                     type: "GET",
-                    url: "http://localhost:3838/users/" + result._id
+                    url: "https://pi-identification-api-2.azurewebsites.net/users/" + result._id
                 }
             }
         });
@@ -143,7 +143,7 @@ router.patch('/:usersId',checkAuth, (req, res, next) => {
             message: 'User updated',
             request: {
                 type: 'GET',
-                url: 'http://localhost:3838/users/' + id
+                url: 'https://pi-identification-api-2.azurewebsites.net/users/' + id
             }
         });
     })
@@ -165,7 +165,7 @@ router.delete('/:usersId',checkAuth, (req, res, next) => {
             message: "User Removed",
             request: {
                 type: "POST",
-                url: "http://localhost:3838/users/",
+                url: "https://pi-identification-api-2.azurewebsites.net/users/",
                 data: {name: 'String', surname: 'Number'}
             }
         });
