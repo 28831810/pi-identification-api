@@ -39,7 +39,7 @@ const User = require('../models/users');
 //gets all users within the DB
 router.get("/", (req, res, next) =>{
     User.find()
-    .select('name surname _id userImage')
+    .select('name surname _id userUpload')
     .exec()
     .then(docs => {
         const response = {
@@ -48,7 +48,7 @@ router.get("/", (req, res, next) =>{
                 return {
                     name: doc.name,
                     surname: doc.surname,
-                    userImage: doc.userImage,
+                    userUpload: doc.userUpload,
                     _id: doc._id,
                     request: {
                         type: 'GET',
@@ -71,7 +71,7 @@ router.get("/", (req, res, next) =>{
 router.get("/:userId", (req, res, next) => {
     const id = req.params.userId;
     User.findById(id)
-    .select('name surname _id userImage')
+    .select('name surname _id userUpload')
     .exec()
     .then(doc => {
         console.log("From database", doc);
@@ -96,12 +96,12 @@ router.get("/:userId", (req, res, next) => {
 });
 
 //post a new user within the DB
-router.post("/",  checkAuth, upload.single('userImage'),  (req, res, next) => {
+router.post("/",  checkAuth, upload.single('userUpload'),  (req, res, next) => {
     const user = new User({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         surname: req.body.surname,
-        userImage: req.file.path
+        userUpload: req.file.path
     });
     user
     .save()
